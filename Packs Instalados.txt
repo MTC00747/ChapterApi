@@ -1,0 +1,40 @@
+Micro.VisualStudio.Web.CodeGeneration.Design
+
+Micro.EntityFramework
+Micro.EntityFramework.sqlserver
+>>Microsoft.EntityFrameworkCore.Tools.dotNet
+
+
+<ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1"/>
+  </ItemGroup>
+
+
+dotnet tool install --global dotnet-aspnet-codegenerator --version 6
+
+
+
+
+
+1 - ADICIONAR UM CONTROLADOR
+
+Os controladores derivam de uma classe base do controler. 
+COntrolador especifico de api.
+
+>>>>> dotnet aspnet-codegenerator  controller -name LivrosController -api -outDir Controllers
+
+
+2 - Em Models colocamos A entidade e suas propiedades(Tabelas);
+
+3 - Após a classses Criadas e COnfiguradas, em programam >>> builder.Services.AddTransient<LivrosRepository, LivrosRepository>();
+
+>>> builder.Services.AddScoped<ChapterContext, ChapterContext>();
+
+>>>>>>> app.UseEndpoints( endpoints => 
+{endpoints.MapControllers();
+});
