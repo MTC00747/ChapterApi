@@ -68,8 +68,15 @@ namespace Chapter.WebApi.Controllers
 
         public IActionResult Deletar(int id)
         {
+            try{
             _livrorepository.Deletar(id);
             return StatusCode(204);
+            }
+            catch(SystemException)
+            {
+                return BadRequest();
+            }
+        
         }
 
     }
