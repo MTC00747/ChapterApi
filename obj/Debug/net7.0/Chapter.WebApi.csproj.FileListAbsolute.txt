@@ -271,3 +271,4 @@ C:\Users\Rosinei Cavalcanti\OneDrive\Área de Trabalho\ProjetoApi\Chapter.WebApi
 C:\Users\Rosinei Cavalcanti\OneDrive\Área de Trabalho\ProjetoApi\Chapter.WebApi\obj\Debug\net7.0\Chapter.WebApi.pdb
 C:\Users\Rosinei Cavalcanti\OneDrive\Área de Trabalho\ProjetoApi\Chapter.WebApi\obj\Debug\net7.0\Chapter.WebApi.genruntimeconfig.cache
 C:\Users\Rosinei Cavalcanti\OneDrive\Área de Trabalho\ProjetoApi\Chapter.WebApi\obj\Debug\net7.0\ref\Chapter.WebApi.dll
+C:\Users\Rosinei Cavalcanti\OneDrive\Área de Trabalho\ProjetoApi\Chapter.WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

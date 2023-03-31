@@ -72,3 +72,12 @@ COntrolador especifico de api.
 >>>>>>> app.UseEndpoints( endpoints => 
 {endpoints.MapControllers();
 });
+///////***********RESTRIÇÃO DE ACESSO COM JWT*********\\\\\\\\\\\\\
+
+
+Adicionar pacote do Bearer 
+
+jwt bearer , aspnet jwt
+
+Criação da entidade Usuario no Model. 
+
