@@ -18,6 +18,40 @@ Micro.EntityFramework.sqlserver
 dotnet tool install --global dotnet-aspnet-codegenerator --version 6
 
 
+----------------Swagger-----------------------
+
+Packs : 
+Swagger
+AddSwaggerGen
+UseSwaggerUI
+
+Importações a serem feitas na program : 
+
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+
+
+Configuração do Swagger : 
+
+
+
+builder.Services.AddSwaggerGen( c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo{
+
+       Title = "ChapterApi",
+       Version 
+       = "v1"
+
+    });
+}
+);
+
+
 
 
 
