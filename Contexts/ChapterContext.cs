@@ -8,18 +8,12 @@ namespace Chapter.WebApi.Contexts
     public class ChapterContext : DbContext //Herda uma classe do sistema "DbContext"
     {
 
-        public ChapterContext()
-        {
+        public ChapterContext(){}
 
-        }
-
-        public ChapterContext(DbContextOptions<ChapterContext> options) : base(options) 
-        {
-
-        }
+        public ChapterContext(DbContextOptions<ChapterContext> options) : base(options){}
+        
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -33,10 +27,8 @@ namespace Chapter.WebApi.Contexts
 
             }
         //Teste
-           
-
         }
-        public DbSet<Livro> Livros {get; set;} // add entidade Livro
-        public DbSet<Usuario> Usuarios{get; set;} // add entidade usuario
+        public DbSet<Livro> Livros {get; set;} // add entidade Livro e acessa a tabela livros
+        public DbSet<Usuario> Usuarios{get; set;} // add entidade usuario e acessa a tablea usuarios
     }
 }

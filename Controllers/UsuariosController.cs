@@ -8,7 +8,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 
-
 namespace Chapter.WebApi.Controllers
 {
     [Produces("application/json")]
@@ -17,25 +16,25 @@ namespace Chapter.WebApi.Controllers
 
     public class UsuariosController : ControllerBase
     {
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly UsuarioRepository _IUsuarioRepository;
 
         public UsuariosController(UsuarioRepository usuarioRepository)
         {
-            _usuarioRepository = usuarioRepository;
+            _IUsuarioRepository = usuarioRepository;
         }
 
         //Get -> /api/usuarios
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_usuarioRepository.Listar());
+            return Ok(_IUsuarioRepository.Listar());
         }
 
         //Post
         [HttpPost]
         public IActionResult Post(Usuario usuario)
         {
-            Usuario UsuarioBuscado = _usuarioRepository.Login(usuario.Email, usuario.Senha);
+            Usuario UsuarioBuscado = _IUsuarioRepository.Login(usuario.Email, usuario.Senha);
             if (UsuarioBuscado == null)
             {
                 return NotFound("Email ou Senha invalido");
@@ -81,7 +80,7 @@ namespace Chapter.WebApi.Controllers
 
         public IActionResult BuscarPorId(int id)
         {
-            Usuario usuario = _usuarioRepository.BuscaPorId(id);
+            Usuario usuario = _IUsuarioRepository.BuscarPorId(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -95,7 +94,7 @@ namespace Chapter.WebApi.Controllers
 
         public IActionResult Atualizar(int id, Usuario usuario)
         {
-            _usuarioRepository.Atualizar(id, usuario);
+            _IUsuarioRepository.Atualizar(id, usuario);
             return StatusCode(204);
         }
 
@@ -107,7 +106,7 @@ namespace Chapter.WebApi.Controllers
         {
             try
             {
-                _usuarioRepository.Deletar(id);
+                _IUsuarioRepository.Deletar(id);
                 return StatusCode(204);
 
             }
@@ -115,12 +114,6 @@ namespace Chapter.WebApi.Controllers
             {
                 return BadRequest();
             }
-
-
-
-
         }
-
-
     }
 }

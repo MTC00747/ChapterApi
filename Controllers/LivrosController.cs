@@ -14,29 +14,37 @@ namespace Chapter.WebApi.Controllers
     [ApiController]
     public class LivrosController : ControllerBase
     {
-        private readonly LivrosRepository _livrorepository; 
-        public LivrosController(LivrosRepository livroRepository) 
+        private readonly LivrosRepository _Ilivrorepository; // protegendo os dados com método privado 
+        public LivrosController(LivrosRepository IlivroRepository)
         {
-                _livrorepository = livroRepository;
+            _Ilivrorepository = IlivroRepository; // armazenando dados de livro repositry no método privado
         }
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_livrorepository.Listar()); // ele chama o repository e dentro do repository ele chama o método Listar
+            try // Tratamento de erros;
+            {
+                return Ok(_Ilivrorepository.Listar()); // ele chama o repository e dentro do repository ele chama o método Listar
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
 
         //get  /api/lirvos/{1}
 
         [HttpGet("{id}")] // Busca Pelo Id Passado
-        public IActionResult BuscaPorId(int id)
+        public IActionResult BuscarPorId(int id)
         {
             Livro livro = new Livro(); // Instancia a classe Livro  
 
-           livro = _livrorepository.BuscaPoId(id); // Atribui a variavel _livroRepository
-             // Instancia  livro 
-            if(livro == null) //Se livro for diferente de nulo , retorna o livro, se for nulo , retorna NotFound
+            livro = _Ilivrorepository.BuscarPorId(id); // Atribui a variavel _livroRepository
+                                                       // Instancia  livro 
+            if (livro == null) //Se livro for diferente de nulo , retorna o livro, se for nulo , retorna NotFound
             {
-                    return NotFound(); 
+                return NotFound();
             }
             return Ok(livro);
         }
@@ -45,12 +53,20 @@ namespace Chapter.WebApi.Controllers
         //Recebe a informação do livro 
         //Atualiza o corpo da requisição 
 
-        [HttpPut ("{id}")]
+        [HttpPut("{id}")]
 
         public IActionResult Atualizar(int id, Livro livro)
         {
-            _livrorepository.Atualizar (id, livro);
-            return StatusCode(204);
+            try
+            {
+                _Ilivrorepository.Atualizar(id, livro);
+                return StatusCode(204);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
 
         }
 
@@ -58,25 +74,34 @@ namespace Chapter.WebApi.Controllers
 
         [HttpPost]
 
-        public IActionResult Cadastrar (Livro livro)
+        public IActionResult Cadastrar(Livro livro)
         {
-            _livrorepository.Cadastrar(livro);
-            return StatusCode(201);
+            try
+            {
+                _Ilivrorepository.Cadastrar(livro);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
 
         public IActionResult Deletar(int id)
         {
-            try{
-            _livrorepository.Deletar(id);
-            return StatusCode(204);
+            try
+            {
+                _Ilivrorepository.Deletar(id);
+                return StatusCode(204);
             }
-            catch(SystemException)
+            catch (SystemException)
             {
                 return BadRequest();
             }
-        
+
         }
 
     }

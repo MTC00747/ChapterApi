@@ -11,7 +11,7 @@ using Microsoft.OpenApi.Models;
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddScoped<ChapterContext, ChapterContext>();
+        builder.Services.AddScoped<ChapterContext, ChapterContext>(); // Chama o ChapterContext , ele instancia sempre o mesmo objeto
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -55,7 +55,7 @@ using Microsoft.OpenApi.Models;
             };
         });
 
-        builder.Services.AddTransient<LivrosRepository, LivrosRepository>();
+        builder.Services.AddTransient<LivrosRepository, LivrosRepository>(); // Toda vez que é instanciando ele cria um novo objeto
         builder.Services.AddTransient<UsuarioRepository, UsuarioRepository>();
 
         //Ativando o middleware para o swagger

@@ -1,37 +1,34 @@
 using Chapter.WebApi.Contexts;
+using Chapter.WebApi.Interfaces;
 using Chapter.WebApi.Models;
-using System; 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chapter.WebApi.Repositories
 {
-    public class LivrosRepository
+    public class LivrosRepository : IlivroRepository
     {
-        private readonly ChapterContext _context;
-        public LivrosRepository(ChapterContext context) 
+        private readonly ChapterContext _context; // Classe para estar Protegendo os dados, deixando os dados apenas para leitura e privados
+        public LivrosRepository(ChapterContext context) // Método construtor , toda vez que isntanciarmos um Objeto da classe Livro repository, vamos depender do DataBase ( Context)
         {
-            _context = context;
+            _context = context; //Salvando os dados quem vem do context Na instancia _context que é privada
 
         }
-        public List<Livro>  Listar()
+        public List<Livro> Listar()
         {
-            return  _context.Livros.ToList(); // Controller se comunica com o Respository e Retorna uma lista com todos os livros
+            return _context.Livros.ToList(); // Controller se comunica com o Respository e Retorna uma lista com todos os livros
         }
 
-        public Livro BuscaPoId(int id)
-        {
-            //select where id=id
-            return _context.Livros.Find(id);
-        }
+        public Livro BuscarPorId(int id) => (_context.Livros.Find(id)); //select where id=id
 
-        public void Atualizar(int id, Livro livro) 
+        public void Atualizar(int id, Livro livro)
         {
             Livro LivroBuscado = new Livro();
             LivroBuscado = _context.Livros.Find(id);
 
-            if(LivroBuscado != null)
+            if (LivroBuscado != null)
             {
                 LivroBuscado.Titulo = livro.Titulo; // Ele vai buscar o livro.titulo e vai trocar pelo novo titulo
                 LivroBuscado.QuantidadePaginas = livro.QuantidadePaginas; // Ele vai buscar o livro.QuantidadeDePaginas e vai trocar pelo novo titulo
@@ -46,7 +43,7 @@ namespace Chapter.WebApi.Repositories
 
         public void Cadastrar(Livro livro)
         {
-            _context.Livros.Add(livro); 
+            _context.Livros.Add(livro);
             _context.SaveChanges();
         }
 
@@ -58,8 +55,8 @@ namespace Chapter.WebApi.Repositories
 
             _context.Livros.Remove(LivroBuscado);
             _context.SaveChanges();
-        }
 
+        }
 
     }
 }
