@@ -21,7 +21,11 @@ namespace Chapter.WebApi.Repositories
             return _context.Livros.ToList(); // Controller se comunica com o Respository e Retorna uma lista com todos os livros
         }
 
-        public Livro BuscarPorId(int id) => (_context.Livros.Find(id)); //select where id=id
+        public Livro BuscarPorId(int id) 
+        {
+            return _context.Livros.Find(id);
+        }
+        //select where id=id
 
         public void Atualizar(int id, Livro livro)
         {
@@ -33,6 +37,8 @@ namespace Chapter.WebApi.Repositories
                 LivroBuscado.Titulo = livro.Titulo; // Ele vai buscar o livro.titulo e vai trocar pelo novo titulo
                 LivroBuscado.QuantidadePaginas = livro.QuantidadePaginas; // Ele vai buscar o livro.QuantidadeDePaginas e vai trocar pelo novo titulo
                 LivroBuscado.Disponivel = livro.Disponivel;
+                LivroBuscado.Preco = livro.Preco;
+                LivroBuscado.Classificacao = livro.Classificacao;
             }
 
             _context.Livros.Update(LivroBuscado);

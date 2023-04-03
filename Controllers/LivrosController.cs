@@ -10,6 +10,7 @@ using Chapter.WebApi.Models;
 
 namespace Chapter.WebApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class LivrosController : ControllerBase
@@ -26,9 +27,9 @@ namespace Chapter.WebApi.Controllers
             {
                 return Ok(_Ilivrorepository.Listar()); // ele chama o repository e dentro do repository ele chama o método Listar
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new Exception(e.Message);
+                throw new Exception(ex.Message);
             }
 
         }

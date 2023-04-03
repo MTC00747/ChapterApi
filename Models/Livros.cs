@@ -11,7 +11,11 @@ namespace Chapter.WebApi.Models
         public int Id { get; set; }
         public string Titulo{ get; set; }
 
+        public decimal Preco{get; set;}
+
         public int QuantidadePaginas { get; set; }
+
+        public int Classificacao {get; set;}
 
         public bool Disponivel { get; set; }
 
