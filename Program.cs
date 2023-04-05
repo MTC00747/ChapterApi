@@ -1,4 +1,5 @@
 using Chapter.WebApi.Contexts;
+using Chapter.WebApi.Interfaces;
 using Chapter.WebApi.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,14 +13,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ChapterContext, ChapterContext>(); // Chama o ChapterContext , ele instancia sempre o mesmo objeto
+builder.Services.AddTransient<LivrosRepository, LivrosRepository>(); // Toda vez que é instanciando ele cria um novo objeto
+builder.Services.AddTransient<UsuarioRepository, UsuarioRepository>();
+
+
 
 builder.Services.AddCors(options =>
 {
-options.AddPolicy("CorsPolicy", builder => {
-    builder.WithOrigins("http://localhost:5128")
-    .AllowAnyHeader()
-    .AllowAnyMethod();
-});
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:5128")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
 });
 
 //Habilitar Cors 
@@ -49,9 +55,9 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        //Valida queme stá solicitando 
+        //Valida quem está solicitando? True
         ValidateIssuer = true,
-        //Valida quem está recebendo
+        //Valida quem está recebendo? True
         ValidateAudience = true,
         //Define se o tempo de inspiração será valido
         ValidateLifetime = true,
@@ -67,8 +73,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddTransient<LivrosRepository, LivrosRepository>(); // Toda vez que é instanciando ele cria um novo objeto
-builder.Services.AddTransient<UsuarioRepository, UsuarioRepository>();
 
 //Ativando o middleware para o swagger
 var app = builder.Build();
@@ -88,7 +92,7 @@ app.UseEndpoints(endpoints =>
      endpoints.MapControllers();
  });
 
- app.UseCors("CorsPolicy");
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.Run();

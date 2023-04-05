@@ -37,50 +37,6 @@ namespace Chapter.WebApi.Controllers
             }
         }
 
-        //Post
-        [HttpPost]
-        public IActionResult Post(Usuario usuario)
-        {
-            Usuario UsuarioBuscado = _IUsuarioRepository.Login(usuario.Email, usuario.Senha);
-            if (UsuarioBuscado == null)
-            {
-                return NotFound("Email ou Senha invalido");
-
-            }
-            //Se o usuario foe encontrado, Segue coma criação do token
-
-            //Define os dados que serão fornecidos no token - payload
-
-            var claims = new[]
-            {
-            //Armazena na claim o email usario autenticado
-            new Claim (JwtRegisteredClaimNames.Email, UsuarioBuscado.Email),
-
-            //Armazena na claim o id do usuario autenticado 
-
-            new Claim (JwtRegisteredClaimNames.Jti, UsuarioBuscado.id.ToString()),
-        };
-
-            // define a chave de acesso ao token 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("chapterapi-chave-autenticacao"));
-
-
-            //Define as credencias do token
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: "chapterapi.webapi", //emissor do token
-                audience: "chapterapi.webapi", // destinatario do token
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30), //Tempo de expiração
-                signingCredentials: creds
-            );
-
-            //Retorna ok com o token
-            return Ok(
-                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
-            );
-        }
         [Authorize]
         [HttpPost, Route("Cadastrar")] //Configurando Rota
         public IActionResult Cadastrar(Usuario usuario)

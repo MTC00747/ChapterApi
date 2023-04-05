@@ -3,6 +3,7 @@ using Chapter.WebApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Chapter.WebApi.Interfaces;
+using Chapter.WebApi.Controllers;
 
 
 
@@ -17,7 +18,7 @@ namespace Chapter.WebApi.Repositories
             _context = context;
         }
 
-        public Usuario Login(String email, string senha)
+        public Usuario Login(string email, string senha)
         {
             return _context.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha); //FirstOrDefault faz a busca  e verifica se é igual
         }
