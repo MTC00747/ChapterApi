@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zOM9lua7ZBbSMm2yy2+bQyCMlbEj9qSH1iGRjksC1C04sFy/1VPhFK/bOdFmhD/iBhUcNLQBM1HhO/91yRlK/w==",
+  "dgSpecHash": "A+lro9R/thWNeoJkgKUe3qmwZ3EVp+NIaaXundxapJBUa3N35tGDXOqqq9qaYHbZ7Db5ich8V/+5ujpkfW5COQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
+  "projectFilePath": "C:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetosSistemas\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rosinei Cavalcanti\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Rosinei Cavalcanti\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

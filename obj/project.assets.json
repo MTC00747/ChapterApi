@@ -8807,11 +8807,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetosSistemas\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
       "projectName": "Chapter.WebApi",
-      "projectPath": "c:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
+      "projectPath": "C:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetosSistemas\\ProjetoApi\\Chapter.WebApi\\Chapter.WebApi.csproj",
       "packagesPath": "C:\\Users\\Rosinei Cavalcanti\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetoApi\\Chapter.WebApi\\obj\\",
+      "outputPath": "C:\\Users\\Rosinei Cavalcanti\\OneDrive\\Área de Trabalho\\ProjetosSistemas\\ProjetoApi\\Chapter.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

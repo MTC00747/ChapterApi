@@ -27,7 +27,14 @@ namespace Chapter.WebApi.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(_IUsuarioRepository.Listar());
+            try
+            {
+                return Ok(_IUsuarioRepository.Listar());
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         //Post
@@ -74,28 +81,56 @@ namespace Chapter.WebApi.Controllers
                 new { token = new JwtSecurityTokenHandler().WriteToken(token) }
             );
         }
-
+        [Authorize]
+        [HttpPost, Route("Cadastrar")] //Configurando Rota
+        public IActionResult Cadastrar(Usuario usuario)
+        {
+            try
+            {
+                _IUsuarioRepository.Cadastrar(usuario); // vai na interface e acessa o método cadastrar e cadastra um objeto do tipo usaurio
+                return StatusCode(201);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         //get -> /api/usuarios/{id}
         [HttpGet("{id}")]
 
         public IActionResult BuscarPorId(int id)
         {
-            Usuario usuario = _IUsuarioRepository.BuscarPorId(id);
-            if (usuario == null)
+            try
             {
-                return NotFound();
+                Usuario usuarioBuscado = _IUsuarioRepository.BuscarPorId(id); //Instancia do Resultado do método Busca Por id
+                if (usuarioBuscado == null)//Verifica se é nulo
+                {
+                    return NotFound();
+                }
+                return Ok(usuarioBuscado);
             }
-            return Ok(usuario);
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
-        [Authorize]
+        [Authorize] //só para usuarios Autorizados
         //put -> /api/usuario/{id}
         //Atualiza
         [HttpPut("{id}")]
 
         public IActionResult Atualizar(int id, Usuario usuario)
         {
-            _IUsuarioRepository.Atualizar(id, usuario);
-            return StatusCode(204);
+            try
+            {
+                _IUsuarioRepository.Atualizar(id, usuario); //acessa o método atualizar da interface , recebe um id e usuario
+                return StatusCode(204);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
         //Delete -> /api/usuarios/{id}
@@ -106,7 +141,7 @@ namespace Chapter.WebApi.Controllers
         {
             try
             {
-                _IUsuarioRepository.Deletar(id);
+                _IUsuarioRepository.Deletar(id); // Rece um id , acesssa o método deletar da interface e deleta o id passado
                 return StatusCode(204);
 
             }
@@ -115,5 +150,6 @@ namespace Chapter.WebApi.Controllers
                 return BadRequest();
             }
         }
+
     }
 }

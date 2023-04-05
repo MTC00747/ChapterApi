@@ -18,6 +18,51 @@ Micro.EntityFramework.sqlserver
 dotnet tool install --global dotnet-aspnet-codegenerator --version 6
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Authorize]
+        [HttpPost]
+        public IActionResult Cadastrar(Usuario usuario)
+        {
+            try
+            {
+                _IUsuarioRepository.Cadastrar(usuario); // vai na interface e acessa o método cadastrar e cadastra um objeto do tipo usaurio
+                return StatusCode(201);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+
+
+builder.Services.AddCors(options =>
+{
+options.AddPolicy("CorsPolicy", builder => {
+    builder.WithOrigins("http://localhost:5128")
+    .AllowAnyHeader()
+    .AllowAnyMethod();
+});
+});
+
+
 ----------------Swagger-----------------------
 
 Packs : 

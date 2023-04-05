@@ -18,13 +18,11 @@ namespace Chapter.WebApi.Repositories
         }
         public List<Livro> Listar()
         {
-            return _context.Livros.ToList(); // Controller se comunica com o Respository e Retorna uma lista com todos os livros
+            return _context.Livros.ToList(); // Controller se comunica com o Respository e Retorna uma lista com todos os elementos da tabela livros
         }
 
-        public Livro BuscarPorId(int id) 
-        {
-            return _context.Livros.Find(id);
-        }
+        public Livro BuscarPorId(int id) => _context.Livros.Find(id); // Acha pelo Id
+        
         //select where id=id
 
         public void Atualizar(int id, Livro livro)
@@ -43,21 +41,21 @@ namespace Chapter.WebApi.Repositories
 
             _context.Livros.Update(LivroBuscado);
 
-            _context.SaveChanges();
+            _context.SaveChanges(); //Salva a mudança feitas
 
         }
 
         public void Cadastrar(Livro livro)
         {
-            _context.Livros.Add(livro);
-            _context.SaveChanges();
+            _context.Livros.Add(livro);//Acessa o Database, vai na tabela livros e cadastra o objeto do tipo livro. 
+            _context.SaveChanges(); // Salva as mudanças Feitas
         }
 
         public void Deletar(int id)
         {
-            Livro LivroBuscado = new Livro();
+            Livro LivroBuscado = new Livro(); //Instancia do objeto livro 
 
-            LivroBuscado = _context.Livros.Find(id);
+            LivroBuscado = _context.Livros.Find(id); // Armazena em LivroBuscado as infromações da tabela Livros
 
             _context.Livros.Remove(LivroBuscado);
             _context.SaveChanges();
