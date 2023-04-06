@@ -24,6 +24,7 @@ namespace Chapter.WebApi.Controllers
         }
 
         //Get -> /api/usuarios
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpGet]
         public IActionResult Listar()
         {
@@ -37,7 +38,7 @@ namespace Chapter.WebApi.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpPost, Route("Cadastrar")] //Configurando Rota
         public IActionResult Cadastrar(Usuario usuario)
         {
@@ -52,6 +53,7 @@ namespace Chapter.WebApi.Controllers
             }
         }
         //get -> /api/usuarios/{id}
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpGet("{id}")]
 
         public IActionResult BuscarPorId(int id)
@@ -70,7 +72,8 @@ namespace Chapter.WebApi.Controllers
                 throw new Exception(ex.Message);
             }
         }
-        [Authorize] //só para usuarios Autorizados
+
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         //put -> /api/usuario/{id}
         //Atualiza
         [HttpPut("{id}")]
@@ -90,7 +93,7 @@ namespace Chapter.WebApi.Controllers
         }
 
         //Delete -> /api/usuarios/{id}
-        [Authorize]
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpDelete("{id}")]
 
         public IActionResult Deletar(int id)
@@ -106,6 +109,5 @@ namespace Chapter.WebApi.Controllers
                 return BadRequest();
             }
         }
-
     }
 }

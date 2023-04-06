@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Chapter.WebApi.Repositories;
 using Chapter.WebApi.Models;
 using Chapter.WebApi.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Chapter.WebApi.Controllers
 {
@@ -15,7 +16,7 @@ namespace Chapter.WebApi.Controllers
     [ApiController]
     public class LivrosController : ControllerBase
     {
-        private readonly IlivroRepository  _Ilivrorepository; // protegendo os dados com método privado 
+        private readonly IlivroRepository _Ilivrorepository; // protegendo os dados com método privado 
         public LivrosController(IlivroRepository IlivroRepository)
         {
             _Ilivrorepository = IlivroRepository; // armazenando dados de livro repositry no método privado
@@ -54,6 +55,8 @@ namespace Chapter.WebApi.Controllers
         //Recebe a informação do livro 
         //Atualiza o corpo da requisição 
 
+        [Authorize(Roles = "1")]
+
         [HttpPut("{id}")]
 
         public IActionResult Atualizar(int id, Livro livro)
@@ -73,6 +76,7 @@ namespace Chapter.WebApi.Controllers
 
         //Recebe A info de Livro que deseja Salvar do corpo da Requisição 
 
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpPost]
 
         public IActionResult Cadastrar(Livro livro)
@@ -89,6 +93,7 @@ namespace Chapter.WebApi.Controllers
 
         }
 
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
         [HttpDelete("{id}")]
 
         public IActionResult Deletar(int id)
