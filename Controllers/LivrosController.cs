@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Chapter.WebApi.Repositories;
 using Chapter.WebApi.Models;
-
+using Chapter.WebApi.Interfaces;
 
 namespace Chapter.WebApi.Controllers
 {
@@ -15,8 +15,8 @@ namespace Chapter.WebApi.Controllers
     [ApiController]
     public class LivrosController : ControllerBase
     {
-        private readonly LivrosRepository _Ilivrorepository; // protegendo os dados com método privado 
-        public LivrosController(LivrosRepository IlivroRepository)
+        private readonly IlivroRepository  _Ilivrorepository; // protegendo os dados com método privado 
+        public LivrosController(IlivroRepository IlivroRepository)
         {
             _Ilivrorepository = IlivroRepository; // armazenando dados de livro repositry no método privado
         }

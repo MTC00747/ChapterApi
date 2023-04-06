@@ -18,8 +18,8 @@ namespace Chapter.WebApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly UsuarioRepository _IusuarioRepository;  //Deixando uma variavel publica privada, Utilizando a interface IUsuarioRepository e atribuindo ela a uma variavel 
-        public LoginController(UsuarioRepository iUsarioRepository) // 
+        private readonly IUsuarioRepository _IusuarioRepository;  //Deixando uma variavel publica privada, Utilizando a interface IUsuarioRepository e atribuindo ela a uma variavel 
+        public LoginController(IUsuarioRepository iUsarioRepository) // 
         {
             _IusuarioRepository = iUsarioRepository; //Transformando a variavel privada em publica
         }
