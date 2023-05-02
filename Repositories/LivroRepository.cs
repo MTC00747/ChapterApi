@@ -37,6 +37,8 @@ namespace Chapter.WebApi.Repositories
                 LivroBuscado.Disponivel = livro.Disponivel;
                 LivroBuscado.Preco = livro.Preco;
                 LivroBuscado.Classificacao = livro.Classificacao;
+                LivroBuscado.Categoria = livro.Categoria;
+                
             }
 
             _context.Livros.Update(LivroBuscado);
@@ -59,7 +61,6 @@ namespace Chapter.WebApi.Repositories
 
             _context.Livros.Remove(LivroBuscado);
             _context.SaveChanges();
-
         }
 
     }

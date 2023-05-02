@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
     {
-        builder.WithOrigins("http://localhost:5128")
+        builder.WithOrigins("http://localhost:4200")
         .AllowAnyHeader()
         .AllowAnyMethod();
     });
@@ -83,6 +83,7 @@ app.UseSwaggerUI(c =>
 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ChapterApi v1"));
 
 app.UseRouting();
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();//Habilitar autenticação
 app.UseAuthorization();//Habilitar a autorização 
@@ -92,8 +93,5 @@ app.UseEndpoints(endpoints =>
  {
      endpoints.MapControllers();
  });
-
-app.UseCors("CorsPolicy");
-app.UseAuthorization();
 
 app.Run();

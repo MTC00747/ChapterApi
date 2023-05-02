@@ -9,7 +9,9 @@ namespace Chapter.WebApi.Models
     public class Livro //Entidade Livro, Abstração do DataBase
     {
         public int Id { get; set; }
-        public string Titulo{ get; set; }
+        public string Titulo{ get; set;}
+        
+         public string Categoria { get; set; }
 
         public decimal Preco{get; set;}
 
