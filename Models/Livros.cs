@@ -21,6 +21,8 @@ namespace Chapter.WebApi.Models
 
         public bool Disponivel { get; set; }
 
+        public string Imagem {get; set;}
+
 
     }
 }

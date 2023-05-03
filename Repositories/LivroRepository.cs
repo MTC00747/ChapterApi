@@ -33,12 +33,12 @@ namespace Chapter.WebApi.Repositories
             if (LivroBuscado != null)
             {
                 LivroBuscado.Titulo = livro.Titulo; // Ele vai buscar o livro.titulo e vai trocar pelo novo titulo
-                LivroBuscado.QuantidadePaginas = livro.QuantidadePaginas; // Ele vai buscar o livro.QuantidadeDePaginas e vai trocar pelo novo titulo
+                LivroBuscado.QuantidadePaginas = livro.QuantidadePaginas; // Ele vai buscar o livro.QuantidadeDePaginas e vai trocar pelo nova quantidade de pages
                 LivroBuscado.Disponivel = livro.Disponivel;
                 LivroBuscado.Preco = livro.Preco;
                 LivroBuscado.Classificacao = livro.Classificacao;
                 LivroBuscado.Categoria = livro.Categoria;
-                
+                LivroBuscado.Imagem = livro.Imagem;
             }
 
             _context.Livros.Update(LivroBuscado);
