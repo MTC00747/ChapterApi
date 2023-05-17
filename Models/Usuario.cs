@@ -8,5 +8,7 @@ namespace Chapter.WebApi.Models
         public string Senha { get; set; } //Senha
 
         public string Tipo {get; set;} // Tipo de Usúario 
+
+        public string Nome {get; set;}
     }
 }

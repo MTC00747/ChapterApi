@@ -40,6 +40,7 @@ namespace Chapter.WebApi.Repositories
                 UsuarioBuscado.Email = usuario.Email; // armazena  usuario.Email e usuario.Senha e sobrepõe o usuarioBuscado
                 UsuarioBuscado.Senha = usuario.Senha;
                 UsuarioBuscado.Tipo = usuario.Tipo;
+                UsuarioBuscado.Nome = usuario.Nome;
 
                 _context.Usuarios.Update(UsuarioBuscado); //Vai até a tablea usuarios e dá um Updtade no Usuario buscado 
                 _context.SaveChanges(); //Salba as alterações

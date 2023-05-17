@@ -35,7 +35,7 @@ namespace Chapter.WebApi.Controllers
                 return NotFound(new{msg ="Email ou Senha invalido"});
 
             }
-            //Se o usuario foe encontrado, Segue coma criação do token
+            //Se o usuario for encontrado, Segue com a criação do token
 
             //Define os dados que serão fornecidos no token - payload
 
@@ -69,7 +69,9 @@ namespace Chapter.WebApi.Controllers
 
             //Retorna ok com o token
             return Ok(
-                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
+                new { token = new JwtSecurityTokenHandler().WriteToken(token), 
+                tipo = UsuarioBuscado.Tipo, 
+                Nome = UsuarioBuscado.Nome}
             );
         }
 
