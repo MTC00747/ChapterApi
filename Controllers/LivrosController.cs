@@ -76,7 +76,7 @@ namespace Chapter.WebApi.Controllers
 
         //Recebe A info de Livro que deseja Salvar do corpo da Requisição 
 
-        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user é adm ou não
+        [Authorize(Roles = "1")] //Roles é o pareametro para dizer se o user tem autorização para acessar o end-point ou não, ex : se é adm ou não. 
         [HttpPost]
 
         public IActionResult Cadastrar(Livro livro)

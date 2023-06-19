@@ -30,5 +30,6 @@ namespace Chapter.WebApi.Contexts
         }
         public DbSet<Livro> Livros {get; set;} // add entidade Livro e acessa a tabela livros
         public DbSet<Usuario> Usuarios{get; set;} // add entidade usuario e acessa a tablea usuarios
+        public DbSet<Pedidos> Pedidos {get; set; } // add Entidade Pedidos e acessa tabela Pedidos
     }
 }

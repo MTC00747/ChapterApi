@@ -13,7 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ChapterContext, ChapterContext>(); // Chama o ChapterContext , ele instancia sempre o mesmo objeto
+builder.Services.AddScoped<PedidosRepository>();
 builder.Services.AddTransient<IlivroRepository, LivrosRepository>(); // Toda vez que é instanciando ele cria um novo objeto
+builder.Services.AddTransient<iPedidos, PedidosRepository>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();// Faz o link entre o controler a interface e o repository
 
 
